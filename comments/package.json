@@ -6,6 +6,9 @@
   "author": "James Sizeland",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "axios": "^0.21.0",
     "cors": "^2.8.5",
