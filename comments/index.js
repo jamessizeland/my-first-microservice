@@ -15,7 +15,7 @@ const commentsByPostId = {};
 
 //handle service requests for data
 app.get("/posts/:id/comments", (req, res) => {
-
+    res.send(commentsByPostId[req.params.id] || []); //guard against no comments yet
 });
 
 //handle service incoming data
