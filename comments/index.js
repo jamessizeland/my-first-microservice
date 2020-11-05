@@ -10,10 +10,8 @@ app.use(bodyParser.json());
 const {
     randomBytes
 } = require('crypto');
-const {
-    prototype
-} = require('stream');
 const port = 4001;
+const commentsByPostId = {};
 
 //handle service requests for data
 app.get("/posts/:id/comments", (req, res) => {
@@ -22,7 +20,18 @@ app.get("/posts/:id/comments", (req, res) => {
 
 //handle service incoming data
 app.post("/posts/:id/comments", (req, res) => {
+    const commentId = randomBytes(4).toString('hex');
+    const {
+        content
+    } = req.body;
+    const comments = commentsByPostId[req.params.id] || []; //if no comments yet
+    comments.push({
+        id: commentId,
+        content
+    });
+    commentsByPostId[req.params.id] = comments;
 
+    res.status(201).send(comments);
 });
 
 
