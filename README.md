@@ -8,8 +8,14 @@ JavaScript microservice project following the very excellent course at https://w
 
 ![steps](img/Steps.png)
 
-data structure will be as follows, using random hex strings for unique IDs of posts and comments.
+## Node Back End
+
+Data structure will be as follows, using random hex strings for unique IDs of posts and comments.
 
 ![posts](img/posts%20service.png)
 
 ![comments structure](img/comments%20by%20post.png)
+
+## React Front End
+
+![react architecture](img/react%20architecture.png)
