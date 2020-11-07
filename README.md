@@ -27,3 +27,7 @@ Data structure will be as follows, using random hex strings for unique IDs of po
 ![async notes](img/async%20notes.png)
 
 ![why async](img/why%20async.png)
+
+## Moderation Service Strategy
+
+![moderation strategy](img/moderation%20strategy.png)
