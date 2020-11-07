@@ -5,6 +5,7 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 // Initialize service variables
 const {
