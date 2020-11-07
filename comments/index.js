@@ -43,7 +43,7 @@ app.post("/posts/:id/comments", async (req, res) => {
 
 app.post("/events", (req, res) => {
     console.log('Received Event:', req.body.type);
-    res.send({}); // respond to event with empty object to confirm
+    res.send({status: 'OK'}); // respond to event with empty object to confirm
 });
 
 //spin up server

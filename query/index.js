@@ -10,16 +10,25 @@ app.use(cors());
 const postServicePort = 4000;
 const commentServicePort = 4001;
 const port = 4002;
+const posts={}; //initialize empty object for incoming posts
 
 //handle service data requests
-app.get('/events', (req, res) => {
-
+app.get('/posts', (req, res) => {
+    res.send(posts);
 });
 
 // handle service incoming data
 app.post('/events', (req, res) => {
-    const event = req.body;
-
+    const {type, data} = req.body;
+    if (type === 'PostCreated') {
+        const {id, title} = data;
+        posts[id] = {id, title, comments: []};
+    } else if (type === 'CommentCreated') {
+        const {id, content, postId} = data;
+        const post = posts[postId];
+        post.comments.push({id, content});
+    }
+    console.log(posts);
     res.send({status: 'OK'});
 });
 
