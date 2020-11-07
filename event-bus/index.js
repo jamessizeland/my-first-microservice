@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 const postServicePort = 4000;
 const commentServicePort = 4001;
 const queryServicePort = 4002;
+const moderationServicePort = 4003;
 const port = 4005;
 
 // handle service incoming data
@@ -18,11 +19,12 @@ app.post('/events', (req, res) => {
     axios.post(`http://localhost:${postServicePort}/events`, event);
     axios.post(`http://localhost:${commentServicePort}/events`, event);
     axios.post(`http://localhost:${queryServicePort}/events`, event);
+    axios.post(`http://localhost:${moderationServicePort}/events`, event);
 
     res.send({status: 'OK'});
 });
 
-//spin up server
+// spin up server
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
