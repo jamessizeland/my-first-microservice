@@ -10,6 +10,7 @@ app.use(cors());
 
 // Initialize service variables
 const port = 4001;
+const eventServicePort = 4005;
 const commentsByPostId = {};
 
 //handle service requests for data
@@ -18,7 +19,7 @@ app.get("/posts/:id/comments", (req, res) => {
 });
 
 //handle service incoming data
-app.post("/posts/:id/comments", (req, res) => {
+app.post("/posts/:id/comments", async (req, res) => {
     const commentId = randomBytes(4).toString('hex');
     const {content} = req.body;
     const comments = commentsByPostId[req.params.id] || []; //if no comments yet
@@ -27,6 +28,15 @@ app.post("/posts/:id/comments", (req, res) => {
         content
     });
     commentsByPostId[req.params.id] = comments;
+
+    await axios.post(`http://localhost:${eventServicePort}/events`, {
+        type: 'CommentCreated',
+        data: {
+            id: commentId,
+            content,
+            postId: req.params.id
+        }
+    });
 
     res.status(201).send(comments);
 });
