@@ -24,6 +24,12 @@ Data structure will be as follows, using random hex strings for unique IDs of po
 
 ![async strategy](img/async%20strategy.png)
 
+<<<<<<< HEAD
 ![async notes](img/async%20notes.png)
 
 ![why async](img/why%20async.png)
+=======
+![async notes](img/async%20notes)
+
+![why async](img/why%20async)
+>>>>>>> eed849f3cdf0bfccb56967fa57932345dd4dc6b8
