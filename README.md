@@ -19,3 +19,11 @@ Data structure will be as follows, using random hex strings for unique IDs of po
 ## React Front End
 
 ![react architecture](img/react%20architecture.png)
+
+## Async Communication Strategy
+
+![async strategy](img/async%20strategy.png)
+
+![async notes](img/async%20notes)
+
+![why async](img/why%20async)
