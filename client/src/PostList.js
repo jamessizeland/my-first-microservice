@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import CommentCreate from './CommentCreate';
 const postServicePort = 4000;
 
 /*Make request over to post service, get a list of all the posts that have ever been created, iterate over that list of posts then create UI element to show titles of posts
@@ -26,6 +27,7 @@ export default () => {
                 >
                     <div className="card-body">
                         <h3>{post.title}</h3>
+                        <CommentCreate postId={post.id}/>
                     </div>
                 </div>
             );
