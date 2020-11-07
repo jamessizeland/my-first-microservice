@@ -3,14 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const {randomBytes} = require('crypto');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 // Initialize service variables
-const {
-    randomBytes
-} = require('crypto');
 const port = 4001;
 const commentsByPostId = {};
 
@@ -22,9 +20,7 @@ app.get("/posts/:id/comments", (req, res) => {
 //handle service incoming data
 app.post("/posts/:id/comments", (req, res) => {
     const commentId = randomBytes(4).toString('hex');
-    const {
-        content
-    } = req.body;
+    const {content} = req.body;
     const comments = commentsByPostId[req.params.id] || []; //if no comments yet
     comments.push({
         id: commentId,
