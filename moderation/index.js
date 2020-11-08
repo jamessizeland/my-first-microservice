@@ -20,7 +20,7 @@ app.post('/events', async (req, res) => {
         const status = data.content.includes(tabooWord) ? 'rejected' : 'approved';
 
         await axios.post(`http://localhost:${eventServicePort}/events`, {
-            type: 'commentModerated',
+            type: 'CommentModerated',
             data: {
                 id: data.id,
                 postId: data.postId,
