@@ -11,10 +11,13 @@ const commentServicePort = 4001;
 const queryServicePort = 4002;
 const moderationServicePort = 4003;
 const port = 4005;
+const events = [];
 
 // handle service incoming data
 app.post('/events', (req, res) => {
     const event = req.body;
+
+    events.push(event);
 
     axios.post(`http://localhost:${postServicePort}/events`, event);
     axios.post(`http://localhost:${commentServicePort}/events`, event);
@@ -23,6 +26,10 @@ app.post('/events', (req, res) => {
 
     res.send({status: 'OK'});
 });
+
+app.get('/events', (req, res) => {
+    res.send(events);
+})
 
 // spin up server
 app.listen(port, () => {
